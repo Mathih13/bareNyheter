@@ -1,0 +1,9 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ActionCreators = undefined;
+
+var _feed = require('./feed');
+
+var FeedActions = babelHelpers.interopRequireWildcard(_feed);
+var ActionCreators = exports.ActionCreators = babelHelpers.extends({}, FeedActions);

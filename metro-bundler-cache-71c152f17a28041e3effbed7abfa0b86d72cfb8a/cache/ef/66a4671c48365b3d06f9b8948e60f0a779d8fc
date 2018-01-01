@@ -1,0 +1,46 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _router = require('./router');
+
+var _nativeBase = require('native-base');
+
+var _reactRedux = require('react-redux');
+
+var _redux = require('redux');
+
+var _actions = require('./actions');
+
+var AppContainer = function (_Component) {
+  babelHelpers.inherits(AppContainer, _Component);
+
+  function AppContainer() {
+    babelHelpers.classCallCheck(this, AppContainer);
+    return babelHelpers.possibleConstructorReturn(this, (AppContainer.__proto__ || Object.getPrototypeOf(AppContainer)).apply(this, arguments));
+  }
+
+  babelHelpers.createClass(AppContainer, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _nativeBase.Root,
+        null,
+        _react2.default.createElement(_router.Tabs, this.props)
+      );
+    }
+  }]);
+  return AppContainer;
+}(_react.Component);
+
+function mapDispatchToProps(dispatch) {
+  return (0, _redux.bindActionCreators)(_actions.ActionCreators, dispatch);
+}
+
+exports.default = (0, _reactRedux.connect)(function () {
+  return {};
+}, mapDispatchToProps)(AppContainer);

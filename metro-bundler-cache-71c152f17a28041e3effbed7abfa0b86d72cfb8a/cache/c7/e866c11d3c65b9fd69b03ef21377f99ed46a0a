@@ -1,0 +1,101 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _nativeBase = require('native-base');
+
+var _FeedItem = require('../FeedItem');
+
+var _FeedItem2 = babelHelpers.interopRequireDefault(_FeedItem);
+
+var _Loader = require('./Loader');
+
+var _Loader2 = babelHelpers.interopRequireDefault(_Loader);
+
+var _reactRedux = require('react-redux');
+
+var _redux = require('redux');
+
+var _actions = require('../actions');
+
+var date_sort_asc = function date_sort_asc(date1, date2) {
+  if (date1 > date2) return 1;
+  if (date1 < date2) return -1;
+  return 0;
+};
+
+var date_sort_desc = function date_sort_desc(date1, date2) {
+  if (date1 > date2) return -1;
+  if (date1 < date2) return 1;
+  return 0;
+};
+
+var NewsFeed = function (_Component) {
+  babelHelpers.inherits(NewsFeed, _Component);
+
+  function NewsFeed(props) {
+    babelHelpers.classCallCheck(this, NewsFeed);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (NewsFeed.__proto__ || Object.getPrototypeOf(NewsFeed)).call(this, props));
+
+    _this.state = {
+      data: null,
+      refreshing: true
+    };
+
+    return _this;
+  }
+
+  babelHelpers.createClass(NewsFeed, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.refreshNewsFeed();
+    }
+  }, {
+    key: 'refresh',
+    value: function refresh() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      if (this.state.refreshing) {
+        return _react2.default.createElement(_Loader2.default, null);
+      } else {
+        return _react2.default.createElement(
+          _nativeBase.Content,
+          { refreshControl: _react2.default.createElement(_reactNative.RefreshControl, { refreshing: this.state.refreshing, onRefresh: function onRefresh() {
+                return _this2.refresh();
+              } }) },
+          _react2.default.createElement(_nativeBase.List, {
+            dataArray: this.state.data,
+            renderRow: function renderRow(article) {
+              return _react2.default.createElement(_FeedItem2.default, { key: article.url,
+                navigation: _this2.props.navigation,
+                author: article.author,
+                url: article.url,
+                title: article.title,
+                publishedAt: article.publishedAt,
+                image: article.urlToImage.replace(/^http:\/\//i, 'https://') });
+            }
+          })
+        );
+      }
+    }
+  }]);
+  return NewsFeed;
+}(_react.Component);
+
+function mapDispatchToProps(dispatch) {
+  return (0, _redux.bindActionCreators)(_actions.ActionCreators, dispatch);
+}
+
+exports.default = (0, _reactRedux.connect)(function () {
+  return {};
+}, mapDispatchToProps)(NewsFeed);

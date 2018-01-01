@@ -1,0 +1,39 @@
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactNavigation = require('react-navigation');
+
+var _reactNativeElements = require('react-native-elements');
+
+var _CuratedFeed = require('./screens/CuratedFeed');
+
+var _CuratedFeed2 = _interopRequireDefault(_CuratedFeed);
+
+var _Settings = require('./screens/Settings');
+
+var _Settings2 = _interopRequireDefault(_Settings);
+
+var _Explore = require('./screens/Explore');
+
+var _Explore2 = _interopRequireDefault(_Explore);
+
+var _WebSurfer = require('./screens/WebSurfer');
+
+var _WebSurfer2 = _interopRequireDefault(_WebSurfer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var CuratedFeedStack = (0, _reactNavigation.StackNavigator)({
+  Feed: {
+    screen: _CuratedFeed2.default,
+    navigationOptions: {
+      headerStyle: { height: '3.5%' }
+    }
+  },
+  WebSurfer: {
+    screen: _WebSurfer2.default
+  }
+}, {
+  headerMode: 'screen'
+});

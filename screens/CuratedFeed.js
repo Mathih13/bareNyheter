@@ -9,9 +9,6 @@ export default class ListExample extends Component {
     super(props)
   }
 
-  componentWillMount() {
-
-  }
 
   // TODO: Newsfeed: change from url dependency to data prop dependency
   render() {

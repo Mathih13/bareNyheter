@@ -1,0 +1,39 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _nativeBase = require('native-base');
+
+var _NewsFeed = require('../components/NewsFeed');
+
+var _NewsFeed2 = babelHelpers.interopRequireDefault(_NewsFeed);
+
+var ListExample = function (_Component) {
+  babelHelpers.inherits(ListExample, _Component);
+
+  function ListExample(props) {
+    babelHelpers.classCallCheck(this, ListExample);
+    return babelHelpers.possibleConstructorReturn(this, (ListExample.__proto__ || Object.getPrototypeOf(ListExample)).call(this, props));
+  }
+
+  babelHelpers.createClass(ListExample, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _nativeBase.Container,
+        null,
+        _react2.default.createElement(_NewsFeed2.default, { navigation: this.props.navigation, url: 'https://newsapi.org/v2/top-headlines?sources=bbc-news,nrk,aftenposten&apiKey=73d118d7f70e41c6bd7e92899ca062b2' })
+      );
+    }
+  }]);
+  return ListExample;
+}(_react.Component);
+
+exports.default = ListExample;

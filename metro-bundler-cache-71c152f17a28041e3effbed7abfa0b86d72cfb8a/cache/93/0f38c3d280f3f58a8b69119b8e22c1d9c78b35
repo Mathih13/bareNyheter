@@ -1,0 +1,93 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _nativeBase = require('native-base');
+
+var _timestamp = require('./utils/timestamp');
+
+var _timestamp2 = babelHelpers.interopRequireDefault(_timestamp);
+
+var FeedItem = function (_Component) {
+  babelHelpers.inherits(FeedItem, _Component);
+
+  function FeedItem(props) {
+    babelHelpers.classCallCheck(this, FeedItem);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (FeedItem.__proto__ || Object.getPrototypeOf(FeedItem)).call(this, props));
+
+    _this.onReadMore = function (url) {
+      _this.props.navigation.navigate('WebSurfer', { url: url });
+    };
+
+    _this.state = {
+      timestamp: (0, _timestamp2.default)(new Date(_this.props.publishedAt))
+    };
+    return _this;
+  }
+
+  babelHelpers.createClass(FeedItem, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        _reactNative.View,
+        { style: {
+
+            overflow: 'hidden',
+            height: 175,
+            marginBottom: 20,
+            backgroundColor: '#333'
+          } },
+        _react2.default.createElement(
+          _reactNative.TouchableOpacity,
+          { onPress: function onPress() {
+              return _this2.onReadMore(_this2.props.url);
+            } },
+          _react2.default.createElement(_reactNative.ImageBackground, {
+            source: { uri: this.props.image },
+            style: { width: '100%', height: '100%', opacity: 0.35 } }),
+          _react2.default.createElement(
+            _nativeBase.Text,
+            { style: {
+                fontFamily: 'Avenir-Light',
+                position: 'absolute',
+                padding: 10,
+                bottom: 0,
+                fontSize: 20,
+                backgroundColor: 'transparent',
+                color: '#fff'
+              }
+            },
+            this.props.title
+          ),
+          this.props.publishedAt && _react2.default.createElement(
+            _nativeBase.Text,
+            { style: {
+                fontFamily: 'Avenir-Light',
+                position: 'absolute',
+                padding: 20,
+                fontSize: 10,
+                top: 0,
+                backgroundColor: 'transparent',
+                color: '#fff'
+              }
+            },
+            this.state.timestamp.difference.suggestion
+          )
+        )
+      );
+    }
+  }]);
+  return FeedItem;
+}(_react.Component);
+
+exports.default = FeedItem;

@@ -1,0 +1,6 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var SET_CURATED_NEWSFEED = exports.SET_CURATED_NEWSFEED = 'SET_CURATED_NEWSFEED';
+
+var FETCH_CURATED_NEWSFEED = exports.FETCH_CURATED_NEWSFEED = 'FETCH_CURATED_NEWSFEED';

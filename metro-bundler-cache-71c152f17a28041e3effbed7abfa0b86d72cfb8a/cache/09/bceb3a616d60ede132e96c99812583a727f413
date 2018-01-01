@@ -1,0 +1,187 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react2 = require("react");
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require("./node_modules/react-transform-hmr/lib/index.js");
+
+var _index2 = _interopRequireDefault(_index);
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _jsxFileName = "/Users/mathiashartveit1/Desktop/sandbox/newsApp/NewsApp2/bareNyheter/App.js",
+    _dec,
+    _class;
+
+exports.default = NCAP;
+
+var _reactRedux = require("react-redux");
+
+var _reactNavigation = require("react-navigation");
+
+var _store = require("./store");
+
+var _store2 = _interopRequireDefault(_store);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  AppWithNavigationState: {
+    displayName: "AppWithNavigationState"
+  }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+  filename: "/Users/mathiashartveit1/Desktop/sandbox/newsApp/NewsApp2/bareNyheter/App.js",
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+  };
+}
+
+var CuratedFeedStack = (0, _reactNavigation.StackNavigator)({
+  Feed: {
+    screen: CuratedFeed,
+    navigationOptions: {
+      headerStyle: { height: '3.5%' }
+    }
+  },
+  WebSurfer: {
+    screen: WebSurfer
+  }
+}, {
+  headerMode: 'screen'
+});
+
+var AppNavigator = (0, _reactNavigation.TabNavigator)({
+  Explore: {
+    screen: Explore,
+    navigationOptions: {
+      tabBarIcon: function tabBarIcon(_ref) {
+        var tintColor = _ref.tintColor;
+        return _react3.default.createElement(Icon, { type: "feather", name: "search", size: 25, color: tintColor, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 26
+          }
+        });
+      }
+    }
+  },
+  CuratedFeed: {
+    screen: CuratedFeedStack,
+    navigationOptions: {
+      tabBarIcon: function tabBarIcon(_ref2) {
+        var tintColor = _ref2.tintColor;
+        return _react3.default.createElement(Icon, { type: "feather", name: "home", iconStyle: { bottom: 2 }, size: 35, containerStyle: {
+            backgroundColor: '#fff',
+            bottom: '10%',
+            borderRadius: 40,
+            width: 55,
+            height: 55,
+            shadowColor: '#555',
+            shadowOffset: { width: 0, height: 0 },
+            shadowOpacity: 0.8,
+            shadowRadius: 1,
+            elevation: 1
+          }, color: tintColor, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 32
+          }
+        });
+      }
+    }
+  },
+  Settings: {
+    screen: Settings,
+    navigationOptions: {
+      tabBarIcon: function tabBarIcon(_ref3) {
+        var tintColor = _ref3.tintColor;
+        return _react3.default.createElement(Icon, { type: "feather", name: "settings", size: 25, color: tintColor, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 49
+          }
+        });
+      }
+    }
+  }
+}, {
+  tabBarOptions: {
+    activeTintColor: '#659DBD',
+    inactiveTintColor: '#999',
+    showLabel: false,
+    style: { backgroundColor: '#fff' }
+  },
+  animationEnabled: false,
+  initialRouteName: 'CuratedFeed'
+
+});
+
+var navReducer = function navReducer(state, action) {
+  var newState = AppNavigator.router.getStateForAction(action, state);
+  return newState || state;
+};
+
+var AppWithNavigationState = _wrapComponent("AppWithNavigationState")((_dec = (0, _reactRedux.connect)(function (state) {
+  return {
+    nav: state.nav
+  };
+}), _dec(_class = function (_Component) {
+  _inherits(AppWithNavigationState, _Component);
+
+  function AppWithNavigationState() {
+    _classCallCheck(this, AppWithNavigationState);
+
+    return _possibleConstructorReturn(this, (AppWithNavigationState.__proto__ || Object.getPrototypeOf(AppWithNavigationState)).apply(this, arguments));
+  }
+
+  _createClass(AppWithNavigationState, [{
+    key: "render",
+    value: function render() {
+      return _react3.default.createElement(AppNavigator, {
+        navigation: (0, _reactNavigation.addNavigationHelpers)({
+          dispatch: this.props.dispatch,
+          state: this.props.nav
+        }),
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 75
+        }
+      });
+    }
+  }]);
+
+  return AppWithNavigationState;
+}(_react2.Component)) || _class));
+
+var store = (0, _store2.default)(navReducer);
+
+function NCAP() {
+  return _react3.default.createElement(
+    _reactRedux.Provider,
+    { store: store, __source: {
+        fileName: _jsxFileName,
+        lineNumber: 89
+      }
+    },
+    _react3.default.createElement(AppWithNavigationState, {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 90
+      }
+    })
+  );
+}

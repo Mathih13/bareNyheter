@@ -1,0 +1,45 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _nativeBase = require('native-base');
+
+var Settings = function (_Component) {
+  babelHelpers.inherits(Settings, _Component);
+
+  function Settings() {
+    babelHelpers.classCallCheck(this, Settings);
+    return babelHelpers.possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).call(this));
+  }
+
+  babelHelpers.createClass(Settings, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {}
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        _nativeBase.Container,
+        null,
+        _react2.default.createElement(_nativeBase.Header, { style: { height: '3.5%', backgroundColor: 'transparent', borderBottomWidth: 0 } }),
+        _react2.default.createElement(
+          _nativeBase.Content,
+          null,
+          _react2.default.createElement(
+            _nativeBase.Text,
+            null,
+            'WEW LAD'
+          )
+        )
+      );
+    }
+  }]);
+  return Settings;
+}(_react.Component);
+
+exports.default = Settings;

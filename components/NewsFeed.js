@@ -4,6 +4,10 @@ import { Container, Header, Content, Footer, FooterTab, Button, List, Text, Icon
 import FeedItem from '../FeedItem'
 import Loader from './Loader'
 
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { ActionCreators } from '../actions'
+
 // Now we will define our date comparison functions. These are callbacks
 // that we will be providing to the array sort method below.
 var date_sort_asc = function (date1, date2) {
@@ -23,39 +27,22 @@ var date_sort_desc = function (date1, date2) {
   return 0;
 };
 
-export default class ListExample extends Component {
+class NewsFeed extends Component {
   constructor(props) {
     super(props)
     this.state = {
       data: null,
       refreshing: true,
     }
+
   }
 
   componentWillMount() {
-    this.grabArticles()
+    this.props.refreshNewsFeed()
 
-  }
-
-  grabArticles() {
-    var url = this.props.url;
-    var component = this
-    var req = new Request(url);
-
-    fetch(req)
-        .then(function(response) {
-          console.log(response);
-            return response.json()
-        })
-        .then((json) => {
-          json.articles.sort(date_sort_asc)
-          console.log(json.articles);
-          component.setState({ data: json.articles, refreshing: false })
-        })
   }
 
   refresh() {
-    this.grabArticles()
   }
 
 
@@ -87,3 +74,9 @@ export default class ListExample extends Component {
     }
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(ActionCreators, dispatch)
+}
+
+export default connect(() => { return {} }, mapDispatchToProps)(NewsFeed)

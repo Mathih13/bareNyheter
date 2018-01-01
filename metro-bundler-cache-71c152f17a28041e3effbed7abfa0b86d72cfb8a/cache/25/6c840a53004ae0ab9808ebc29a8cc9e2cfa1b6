@@ -1,0 +1,19 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = getRootReducer;
+
+var _redux = require("redux");
+
+var _feed = require("./feed");
+
+var _feed2 = _interopRequireDefault(_feed);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function getRootReducer(navReducer) {
+    return (0, _redux.combineReducers)({
+        nav: navReducer,
+        feed: _feed2.default
+    });
+}

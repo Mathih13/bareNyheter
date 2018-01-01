@@ -1,0 +1,13 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchedFeed = undefined;
+
+var _createReducer = require('../utils/createReducer');
+
+var _createReducer2 = babelHelpers.interopRequireDefault(_createReducer);
+
+var _types = require('../actions/types');
+
+var types = babelHelpers.interopRequireWildcard(_types);
+var fetchedFeed = exports.fetchedFeed = (0, _createReducer2.default)({}, {});

@@ -1,0 +1,48 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _class, _temp;
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = babelHelpers.interopRequireDefault(_propTypes);
+
+var _react = require('react');
+
+var React = babelHelpers.interopRequireWildcard(_react);
+
+var _reactNative = require('react-native');
+
+var BlurView = (_temp = _class = function (_React$Component) {
+  babelHelpers.inherits(BlurView, _React$Component);
+
+  function BlurView() {
+    babelHelpers.classCallCheck(this, BlurView);
+    return babelHelpers.possibleConstructorReturn(this, (BlurView.__proto__ || Object.getPrototypeOf(BlurView)).apply(this, arguments));
+  }
+
+  babelHelpers.createClass(BlurView, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          style = _props.style,
+          props = babelHelpers.objectWithoutProperties(_props, ['style']);
+
+
+      return React.createElement(NativeBlurView, babelHelpers.extends({}, props, { style: [style, { backgroundColor: 'transparent' }] }));
+    }
+  }]);
+  return BlurView;
+}(React.Component), _class.propTypes = babelHelpers.extends({
+  tint: _propTypes2.default.oneOf(['light', 'default', 'dark']).isRequired,
+  intensity: _propTypes2.default.number.isRequired
+}, _reactNative.ViewPropTypes), _class.defaultProps = {
+  tint: 'default',
+  intensity: 50
+}, _temp);
+exports.default = BlurView;
+
+
+var NativeBlurView = (0, _reactNative.requireNativeComponent)('ExponentBlurView', BlurView);

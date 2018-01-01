@@ -1,0 +1,153 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react2 = require('react');
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require('./../node_modules/react-transform-hmr/lib/index.js');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _jsxFileName = '/Users/mathiashartveit1/Desktop/sandbox/newsApp/NewsApp2/bareNyheter/components/NewsFeed.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _reactNative = require('react-native');
+
+var _nativeBase = require('native-base');
+
+var _FeedItem = require('../FeedItem');
+
+var _FeedItem2 = _interopRequireDefault(_FeedItem);
+
+var _Loader = require('./Loader');
+
+var _Loader2 = _interopRequireDefault(_Loader);
+
+var _feed = require('../actions/feed');
+
+var feedActions = _interopRequireWildcard(_feed);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  ListExample: {
+    displayName: 'ListExample'
+  }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+  filename: '/Users/mathiashartveit1/Desktop/sandbox/newsApp/NewsApp2/bareNyheter/components/NewsFeed.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+  };
+}
+
+var date_sort_asc = function date_sort_asc(date1, date2) {
+  if (date1 > date2) return 1;
+  if (date1 < date2) return -1;
+  return 0;
+};
+
+var date_sort_desc = function date_sort_desc(date1, date2) {
+  if (date1 > date2) return -1;
+  if (date1 < date2) return 1;
+  return 0;
+};
+
+var ListExample = _wrapComponent('ListExample')(function (_Component) {
+  _inherits(ListExample, _Component);
+
+  function ListExample(props) {
+    _classCallCheck(this, ListExample);
+
+    var _this = _possibleConstructorReturn(this, (ListExample.__proto__ || Object.getPrototypeOf(ListExample)).call(this, props));
+
+    _this.state = {
+      data: null,
+      refreshing: true
+    };
+    return _this;
+  }
+
+  _createClass(ListExample, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.refresh();
+    }
+  }, {
+    key: 'refresh',
+    value: function refresh() {
+      feedActions.refreshNewsFeed();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      if (this.state.refreshing) {
+        return _react3.default.createElement(_Loader2.default, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 51
+          }
+        });
+      } else {
+        return _react3.default.createElement(
+          _nativeBase.Content,
+          { refreshControl: _react3.default.createElement(_reactNative.RefreshControl, { refreshing: this.state.refreshing, onRefresh: function onRefresh() {
+                return _this2.refresh();
+              }, __source: {
+                fileName: _jsxFileName,
+                lineNumber: 55
+              }
+            }), __source: {
+              fileName: _jsxFileName,
+              lineNumber: 55
+            }
+          },
+          _react3.default.createElement(_nativeBase.List, {
+            dataArray: this.state.data,
+            renderRow: function renderRow(article) {
+              return _react3.default.createElement(_FeedItem2.default, { key: article.url,
+                navigation: _this2.props.navigation,
+                author: article.author,
+                url: article.url,
+                title: article.title,
+                publishedAt: article.publishedAt,
+                image: article.urlToImage.replace(/^http:\/\//i, 'https://'), __source: {
+                  fileName: _jsxFileName,
+                  lineNumber: 59
+                }
+              });
+            },
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 56
+            }
+          })
+        );
+      }
+    }
+  }]);
+
+  return ListExample;
+}(_react2.Component));
+
+exports.default = ListExample;

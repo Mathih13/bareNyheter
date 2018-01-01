@@ -1,0 +1,81 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _nativeBase = require('native-base');
+
+var _NewsFeed = require('../components/NewsFeed');
+
+var _NewsFeed2 = babelHelpers.interopRequireDefault(_NewsFeed);
+
+var Explore = function (_Component) {
+  babelHelpers.inherits(Explore, _Component);
+
+  function Explore() {
+    babelHelpers.classCallCheck(this, Explore);
+
+    var _this = babelHelpers.possibleConstructorReturn(this, (Explore.__proto__ || Object.getPrototypeOf(Explore)).call(this));
+
+    _this.state = {
+      searchVal: null
+    };
+    return _this;
+  }
+
+  babelHelpers.createClass(Explore, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {}
+  }, {
+    key: 'search',
+    value: function search() {
+      if (this.state.searchVal != null) {
+        console.log(this.state.searchVal);
+      } else {}
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        _nativeBase.Container,
+        null,
+        _react2.default.createElement(
+          _nativeBase.Header,
+          { searchBar: true, rounded: true },
+          _react2.default.createElement(
+            _nativeBase.Item,
+            null,
+            _react2.default.createElement(_nativeBase.Icon, { name: 'ios-search' }),
+            _react2.default.createElement(_nativeBase.Input, { placeholder: 'S\xF8keord...', onChangeText: function onChangeText(value) {
+                if (value == '') {
+                  _this2.setState({ searchVal: null });
+                } else {
+                  _this2.setState({ searchVal: value });
+                }
+              } })
+          ),
+          _react2.default.createElement(
+            _nativeBase.Button,
+            { transparent: true, onPress: function onPress() {
+                return _this2.search();
+              } },
+            _react2.default.createElement(
+              _nativeBase.Text,
+              null,
+              'Search'
+            )
+          )
+        )
+      );
+    }
+  }]);
+  return Explore;
+}(_react.Component);
+
+exports.default = Explore;

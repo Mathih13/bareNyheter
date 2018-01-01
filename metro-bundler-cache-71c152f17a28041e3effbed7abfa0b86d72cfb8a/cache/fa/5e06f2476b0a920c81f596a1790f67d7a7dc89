@@ -1,0 +1,9 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _CameraBasedBarCodeScanner = require('./CameraBasedBarCodeScanner');
+
+var _CameraBasedBarCodeScanner2 = babelHelpers.interopRequireDefault(_CameraBasedBarCodeScanner);
+
+exports.default = _CameraBasedBarCodeScanner2.default;

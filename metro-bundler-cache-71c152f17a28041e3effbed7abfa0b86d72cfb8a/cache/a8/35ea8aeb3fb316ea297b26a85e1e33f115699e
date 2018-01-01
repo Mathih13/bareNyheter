@@ -1,0 +1,148 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react2 = require('react');
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require('./node_modules/react-transform-hmr/lib/index.js');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _jsxFileName = '/Users/mathiashartveit1/Desktop/sandbox/newsApp/NewsApp2/bareNyheter/FeedItem.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _reactNative = require('react-native');
+
+var _nativeBase = require('native-base');
+
+var _timestamp = require('./utils/timestamp');
+
+var _timestamp2 = _interopRequireDefault(_timestamp);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+  FeedItem: {
+    displayName: 'FeedItem'
+  }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+  filename: '/Users/mathiashartveit1/Desktop/sandbox/newsApp/NewsApp2/bareNyheter/FeedItem.js',
+  components: _components,
+  locals: [module],
+  imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+  return function (Component) {
+    return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+  };
+}
+
+var FeedItem = _wrapComponent('FeedItem')(function (_Component) {
+  _inherits(FeedItem, _Component);
+
+  function FeedItem(props) {
+    _classCallCheck(this, FeedItem);
+
+    var _this = _possibleConstructorReturn(this, (FeedItem.__proto__ || Object.getPrototypeOf(FeedItem)).call(this, props));
+
+    _this.onReadMore = function (url) {
+      _this.props.navigation.navigate('WebSurfer', { url: url });
+    };
+
+    _this.state = {
+      timestamp: (0, _timestamp2.default)(new Date(_this.props.publishedAt))
+    };
+    return _this;
+  }
+
+  _createClass(FeedItem, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react3.default.createElement(
+        _reactNative.View,
+        { style: {
+
+            overflow: 'hidden',
+            height: 175,
+            marginBottom: 20,
+            backgroundColor: '#333'
+          }, __source: {
+            fileName: _jsxFileName,
+            lineNumber: 20
+          }
+        },
+        _react3.default.createElement(
+          _reactNative.TouchableOpacity,
+          { onPress: function onPress() {
+              return _this2.onReadMore(_this2.props.url);
+            }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 27
+            }
+          },
+          _react3.default.createElement(_reactNative.ImageBackground, {
+            source: { uri: this.props.image },
+            style: { width: '100%', height: '100%', opacity: 0.35 }, __source: {
+              fileName: _jsxFileName,
+              lineNumber: 28
+            }
+          }),
+          _react3.default.createElement(
+            _nativeBase.Text,
+            { style: {
+                fontFamily: 'Avenir-Light',
+                position: 'absolute',
+                padding: 10,
+                bottom: 0,
+                fontSize: 20,
+                backgroundColor: 'transparent',
+                color: '#fff'
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 31
+              }
+            },
+            this.props.title
+          ),
+          this.props.publishedAt && _react3.default.createElement(
+            _nativeBase.Text,
+            { style: {
+                fontFamily: 'Avenir-Light',
+                position: 'absolute',
+                padding: 20,
+                fontSize: 10,
+                top: 0,
+                backgroundColor: 'transparent',
+                color: '#fff'
+              },
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 44
+              }
+            },
+            this.state.timestamp.difference.suggestion
+          )
+        )
+      );
+    }
+  }]);
+
+  return FeedItem;
+}(_react2.Component));
+
+exports.default = FeedItem;

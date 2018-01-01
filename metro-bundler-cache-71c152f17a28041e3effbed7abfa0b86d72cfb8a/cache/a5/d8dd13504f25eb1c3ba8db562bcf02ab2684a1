@@ -1,0 +1,93 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Tabs = undefined;
+
+var _react = require('react');
+
+var _react2 = babelHelpers.interopRequireDefault(_react);
+
+var _reactNavigation = require('react-navigation');
+
+var _reactNativeElements = require('react-native-elements');
+
+var _CuratedFeed = require('./screens/CuratedFeed');
+
+var _CuratedFeed2 = babelHelpers.interopRequireDefault(_CuratedFeed);
+
+var _Settings = require('./screens/Settings');
+
+var _Settings2 = babelHelpers.interopRequireDefault(_Settings);
+
+var _Explore = require('./screens/Explore');
+
+var _Explore2 = babelHelpers.interopRequireDefault(_Explore);
+
+var _WebSurfer = require('./screens/WebSurfer');
+
+var _WebSurfer2 = babelHelpers.interopRequireDefault(_WebSurfer);
+
+var CuratedFeedStack = (0, _reactNavigation.StackNavigator)({
+  Feed: {
+    screen: _CuratedFeed2.default,
+    navigationOptions: {
+      headerStyle: { height: '3.5%' }
+    }
+  },
+  WebSurfer: {
+    screen: _WebSurfer2.default
+  }
+}, {
+  headerMode: 'screen'
+});
+
+var Tabs = exports.Tabs = (0, _reactNavigation.TabNavigator)({
+  Explore: {
+    screen: _Explore2.default,
+    navigationOptions: {
+      tabBarIcon: function tabBarIcon(_ref) {
+        var tintColor = _ref.tintColor;
+        return _react2.default.createElement(_reactNativeElements.Icon, { type: 'feather', name: 'search', size: 25, color: tintColor });
+      }
+    }
+  },
+  CuratedFeed: {
+    screen: CuratedFeedStack,
+    navigationOptions: {
+      tabBarIcon: function tabBarIcon(_ref2) {
+        var tintColor = _ref2.tintColor;
+        return _react2.default.createElement(_reactNativeElements.Icon, { type: 'feather', name: 'home', iconStyle: { bottom: 2 }, size: 35, containerStyle: {
+            backgroundColor: '#fff',
+            bottom: '10%',
+            borderRadius: 40,
+            width: 55,
+            height: 55,
+            shadowColor: '#555',
+            shadowOffset: { width: 0, height: 0 },
+            shadowOpacity: 0.8,
+            shadowRadius: 1,
+            elevation: 1
+          }, color: tintColor });
+      }
+    }
+  },
+  Settings: {
+    screen: _Settings2.default,
+    navigationOptions: {
+      tabBarIcon: function tabBarIcon(_ref3) {
+        var tintColor = _ref3.tintColor;
+        return _react2.default.createElement(_reactNativeElements.Icon, { type: 'feather', name: 'settings', size: 25, color: tintColor });
+      }
+    }
+  }
+}, {
+  tabBarOptions: {
+    activeTintColor: '#659DBD',
+    inactiveTintColor: '#999',
+    showLabel: false,
+    style: { backgroundColor: '#fff' }
+  },
+  animationEnabled: false,
+  initialRouteName: 'CuratedFeed'
+
+});
