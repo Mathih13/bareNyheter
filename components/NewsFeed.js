@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { RefreshControl } from 'react-native'
+
 import { Container, Header, Content, Footer, FooterTab, Button, List, Text, Icon } from 'native-base';
 import FeedItem from '../FeedItem'
 import Loader from './Loader'
 
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { ActionCreators } from '../actions'
+import { refreshNewsFeed } from '../actions/feed';
+
+import Slide from './animations/Slide'
 
 // Now we will define our date comparison functions. These are callbacks
 // that we will be providing to the array sort method below.
@@ -30,42 +32,37 @@ var date_sort_desc = function (date1, date2) {
 class NewsFeed extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      data: null,
-      refreshing: true,
-    }
-
   }
 
   componentWillMount() {
-    this.props.refreshNewsFeed()
-
+    this.refresh()
   }
 
   refresh() {
+    this.props.dispatch(refreshNewsFeed())
   }
 
-
-
   // TODO: Make this "one" container instead of 2
-  render() {
-    if (this.state.refreshing) {
+  render() {  
+    if (!this.props.newsFeedData) {
       return (
         <Loader />
       );
     } else {
       return (
-        <Content  refreshControl={ <RefreshControl refreshing={this.state.refreshing} onRefresh={() => this.refresh()}/> }>
+        <Content  refreshControl={ <RefreshControl refreshing={!this.props.newsFeedData} onRefresh={() => this.refresh()}/> }>
           <List
-            dataArray={this.state.data}
+            dataArray={this.props.newsFeedData}
             renderRow={(article) =>
-              <FeedItem key={article.url}
+              <Slide> 
+                <FeedItem key={article.url}
                 navigation={this.props.navigation}
                 author={article.author}
                 url={article.url}
                 title={article.title}
                 publishedAt={article.publishedAt}
                 image={article.urlToImage.replace(/^http:\/\//i, 'https://')} />
+              </Slide>
             }
           />
         </Content>
@@ -75,8 +72,10 @@ class NewsFeed extends Component {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(ActionCreators, dispatch)
+function mapStateToProps(state) {
+  return {
+    newsFeedData: state.fetchedFeed
+  }
 }
 
-export default connect(() => { return {} }, mapDispatchToProps)(NewsFeed)
+export default connect(mapStateToProps)(NewsFeed)

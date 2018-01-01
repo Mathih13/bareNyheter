@@ -18,7 +18,6 @@ export default class FeedItem extends Component {
   render() {
     return (
       <View style={{
-
         overflow: 'hidden',
         height: 175,
         marginBottom: 20,
