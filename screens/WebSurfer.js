@@ -49,7 +49,8 @@ export default class WebSurfer extends Component {
       return (
         <WebView
         source={{uri: this.props.navigation.state.params.url}}
+        onLoad={() => console.log('wew loaded')}
         />
-      );
+      )
   }
 }

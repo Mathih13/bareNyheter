@@ -17,11 +17,14 @@ export default class FeedItem extends Component {
 
   render() {
     return (
-      <View style={{
+      <Card style={{
         overflow: 'hidden',
         height: 175,
-        marginBottom: 20,
+        marginLeft: 7.5,
+        marginRight: 7.5,
+        marginBottom: 15,
         backgroundColor: '#333',
+        borderRadius: 15,
       }}>
       <TouchableOpacity onPress={(() => this.onReadMore(this.props.url))}>
         <ImageBackground
@@ -39,6 +42,8 @@ export default class FeedItem extends Component {
         >
           {this.props.title}
         </Text>
+
+        
         {this.props.publishedAt &&
           <Text style={{
             fontFamily: 'Avenir-Light',
@@ -54,7 +59,7 @@ export default class FeedItem extends Component {
           </Text>
         }
       </TouchableOpacity>
-      </View>
+      </Card>
     );
   }
 }

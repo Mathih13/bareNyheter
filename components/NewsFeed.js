@@ -4,11 +4,11 @@ import { RefreshControl } from 'react-native'
 import { Container, Header, Content, Footer, FooterTab, Button, List, Text, Icon } from 'native-base';
 import FeedItem from '../FeedItem'
 import Loader from './Loader'
+import * as Animatable from 'react-native-animatable';
 
 import { connect } from 'react-redux'
 import { refreshNewsFeed } from '../actions/feed';
 
-import Slide from './animations/Slide'
 
 // Now we will define our date comparison functions. These are callbacks
 // that we will be providing to the array sort method below.
@@ -50,23 +50,22 @@ class NewsFeed extends Component {
       );
     } else {
       return (
-        <Content  refreshControl={ <RefreshControl refreshing={!this.props.newsFeedData} onRefresh={() => this.refresh()}/> }>
+          <Content refreshControl={ <RefreshControl refreshing={!this.props.newsFeedData} onRefresh={() => this.refresh()}/> }>
+          <Animatable.View animation='fadeInUp' easing='ease-in-cubic' delay={150}>
           <List
             dataArray={this.props.newsFeedData}
             renderRow={(article) =>
-              <Slide> 
-                <FeedItem key={article.url}
+              <FeedItem key={article.url}
                 navigation={this.props.navigation}
                 author={article.author}
                 url={article.url}
                 title={article.title}
                 publishedAt={article.publishedAt}
                 image={article.urlToImage.replace(/^http:\/\//i, 'https://')} />
-              </Slide>
             }
           />
+          </Animatable.View>
         </Content>
-
       );
     }
   }
